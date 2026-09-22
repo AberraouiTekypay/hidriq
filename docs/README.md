@@ -52,15 +52,16 @@ Detailed documentation is organized in this repository:
 
 | Document | Purpose & Contents |
 | :--- | :--- |
+| [`AGRONOMIC-ENGINE.md`](file:///C:/hidriq/docs/AGRONOMIC-ENGINE.md) | Full mathematical and agronomic specification for FAO-56 Penman-Monteith, dual crop coefficients, soil moisture balance, explainability, and 20 non-negotiable rules. |
 | [`PRODUCT.md`](file:///C:/hidriq/docs/PRODUCT.md) | Full product thesis, problem space, B2B verticals, B2C Manual Garden Mode, Garden Digital Twin, second-home use cases, and operating modes. |
-| [`ARCHITECTURE.md`](file:///C:/hidriq/docs/ARCHITECTURE.md) | Technical system architecture, the 5 intelligence engines, agronomic models (FAO-56 Penman-Monteith ET₀), APIs, and feedback loop. |
+| [`ARCHITECTURE.md`](file:///C:/hidriq/docs/ARCHITECTURE.md) | Technical system architecture, the 7 intelligence engines, agronomic models (FAO-56 Penman-Monteith ET₀), APIs, and feedback loop. |
+| [`DECISIONS.md`](file:///C:/hidriq/docs/DECISIONS.md) | Architectural Decision Records (ADRs 001 through 017) explaining key venture, design, technical, and commercial choices. |
 | [`POC-ZEPHYR.md`](file:///C:/hidriq/docs/POC-ZEPHYR.md) | Scope, methodology, shadow-mode phasing, and verification metrics for the initial POC with Zephyr Hotels in Morocco. |
 | [`ROADMAP.md`](file:///C:/hidriq/docs/ROADMAP.md) | Staged venture roadmap from Hospitality (Stage 1) through Golf/Residential (Stage 2), Agriculture (Stage 3), and Water Infrastructure (Stage 4). |
 | [`COMPETITIVE-LANDSCAPE.md`](file:///C:/hidriq/docs/COMPETITIVE-LANDSCAPE.md) | Rigorous market analysis of incumbent hardware manufacturers (Rain Bird, Hunter, Toro, Netafim, Galcon, Weathermatic) and ag-tech platforms (CropX, Arable), highlighting the independent intelligence opportunity. |
 | [`IMAGE_SOURCES.md`](file:///C:/hidriq/docs/IMAGE_SOURCES.md) | Image audit, licensing confirmation, photographer credits, and Unsplash URLs used across the platform. |
 | [`DATA-SOURCES.md`](file:///C:/hidriq/docs/DATA-SOURCES.md) | Multi-source data ingestion abstractions (Geospatial, Weather, Satellite, Elevation, Controllers, Meters, Sensors). |
 | [`DEPLOYMENT.md`](file:///C:/hidriq/docs/DEPLOYMENT.md) | Deployment runbook for Vercel, Next.js configuration, custom domain DNS records (`hidriq.com`), and environment variables. |
-| [`DECISIONS.md`](file:///C:/hidriq/docs/DECISIONS.md) | Architectural Decision Records (ADRs) explaining key venture, design, technical, and commercial choices. |
 
 ---
 
