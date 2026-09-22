@@ -1,18 +1,52 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { X, Sparkles, Building2, Home, CheckCircle2, UploadCloud, ShieldCheck } from "lucide-react";
+import React, { useState, useEffect, useCallback } from "react";
+import {
+  X,
+  Sparkles,
+  Building2,
+  Home,
+  CheckCircle2,
+  UploadCloud,
+  ShieldCheck,
+  LocateFixed,
+  MapPin,
+  AlertCircle,
+  RefreshCw,
+  Sun,
+  Mountain,
+  Droplets,
+  Compass,
+} from "lucide-react";
+
+interface EnvironmentalProfile {
+  elevation: string;
+  referenceET0: string;
+  solarExposure: string;
+  climateClassification: string;
+  cadastralGrid: string;
+  dataConfidence: string;
+}
+
+interface CoordinatesData {
+  latitude: number;
+  longitude: number;
+  accuracy: string;
+  formatted: string;
+}
 
 interface LeadCaptureModalProps {
   isOpen: boolean;
   onClose: () => void;
   defaultTab?: "b2c" | "b2b";
+  autoDetectLocation?: boolean;
 }
 
 export const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({
   isOpen,
   onClose,
   defaultTab = "b2c",
+  autoDetectLocation = false,
 }) => {
   const [activeTab, setActiveTab] = useState<"b2c" | "b2b">(defaultTab);
   const [submitted, setSubmitted] = useState<boolean>(false);
@@ -33,6 +67,13 @@ export const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({
   const [b2cWaterMethod, setB2cWaterMethod] = useState("Hose / Manual Taps");
   const b2cPhotosSelected = 3;
 
+  // Geolocation states
+  const [isLocating, setIsLocating] = useState(false);
+  const [locationSuccess, setLocationSuccess] = useState(false);
+  const [locationError, setLocationError] = useState<string | null>(null);
+  const [detectedCoords, setDetectedCoords] = useState<CoordinatesData | null>(null);
+  const [detectedEnv, setDetectedEnv] = useState<EnvironmentalProfile | null>(null);
+
   // B2B Form State
   const [b2bName, setB2bName] = useState("");
   const [b2bCompany, setB2bCompany] = useState("");
@@ -51,6 +92,99 @@ export const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose]);
 
+  // Automatic Geolocation Handler
+  const handleAutoDetectLocation = useCallback(() => {
+    if (typeof window === "undefined" || !navigator.geolocation) {
+      setLocationError("Geolocation is not supported by your browser. Please enter your location manually.");
+      return;
+    }
+
+    setIsLocating(true);
+    setLocationError(null);
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        const acc = position.coords.accuracy ? Math.round(position.coords.accuracy) : null;
+
+        try {
+          const res = await fetch(
+            `/api/geocode/reverse?lat=${lat}&lng=${lng}${acc ? `&accuracy=${acc}` : ""}`
+          );
+
+          if (res.ok) {
+            const data = await res.json();
+            const displayName = data.locationName
+              ? `${data.locationName} (${data.coordinates.formatted})`
+              : data.coordinates.formatted;
+
+            setB2cLocation(displayName);
+            setDetectedCoords(data.coordinates);
+            setDetectedEnv(data.environmentalParameters);
+            setLocationSuccess(true);
+            setLocationError(null);
+          } else {
+            // Fallback coordinate formatting if API route fails
+            const latDir = lat >= 0 ? "N" : "S";
+            const lngDir = lng >= 0 ? "E" : "W";
+            const formatted = `${Math.abs(lat).toFixed(4)}° ${latDir}, ${Math.abs(lng).toFixed(4)}° ${lngDir}`;
+            setB2cLocation(`Detected GPS: ${formatted}`);
+            setDetectedCoords({
+              latitude: lat,
+              longitude: lng,
+              accuracy: acc ? `±${acc}m` : "±15m",
+              formatted,
+            });
+            setLocationSuccess(true);
+          }
+        } catch {
+          // Network or offline fallback
+          const latDir = lat >= 0 ? "N" : "S";
+          const lngDir = lng >= 0 ? "E" : "W";
+          const formatted = `${Math.abs(lat).toFixed(4)}° ${latDir}, ${Math.abs(lng).toFixed(4)}° ${lngDir}`;
+          setB2cLocation(`Detected GPS: ${formatted}`);
+          setDetectedCoords({
+            latitude: lat,
+            longitude: lng,
+            accuracy: acc ? `±${acc}m` : "±15m",
+            formatted,
+          });
+          setLocationSuccess(true);
+        } finally {
+          setIsLocating(false);
+        }
+      },
+      (err) => {
+        setIsLocating(false);
+        if (err.code === 1) {
+          setLocationError("Location permission was declined. Please enter your garden city or address manually.");
+        } else if (err.code === 2) {
+          setLocationError("GPS position unavailable. Please enter your garden address manually.");
+        } else if (err.code === 3) {
+          setLocationError("GPS signal timed out. Please enter your location manually or click retry.");
+        } else {
+          setLocationError("Unable to acquire location automatically. Please type your city or address.");
+        }
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 60000,
+      }
+    );
+  }, []);
+
+  // Trigger auto-detection on open if requested
+  useEffect(() => {
+    if (isOpen && autoDetectLocation && activeTab === "b2c" && !b2cLocation) {
+      const timer = setTimeout(() => {
+        handleAutoDetectLocation();
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, autoDetectLocation, activeTab, b2cLocation, handleAutoDetectLocation]);
+
   if (!isOpen) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -62,6 +196,9 @@ export const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({
         ? {
             type: "B2C_GARDEN_CHECK",
             location: b2cLocation,
+            coordinates: detectedCoords || null,
+            environmentalParameters: detectedEnv || null,
+            isAutoDetected: locationSuccess,
             email: b2cEmail,
             gardenType: b2cGardenType,
             wateringMethod: b2cWaterMethod,
@@ -126,7 +263,7 @@ export const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({
                 Connect with HIDRIQ
               </h3>
               <p className="text-xs text-slate-300 mt-1">
-                Select your track below to request an enterprise property audit or generate a free residential garden assessment.
+                Select your track below to generate a free residential garden assessment or request an enterprise property audit.
               </p>
             </div>
 
@@ -162,20 +299,164 @@ export const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({
             {/* Active Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
               {activeTab === "b2c" ? (
-                /* B2C FORM FIELDS */
+                /* B2C FORM FIELDS WITH AUTOMATIC GEOLOCATION */
                 <>
-                  <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1">
-                      Garden / Property Location (City or GPS)
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Marbella, Mallorca, Estepona, Marrakech, Cascais"
-                      value={b2cLocation}
-                      onChange={(e) => setB2cLocation(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.1] text-xs text-white placeholder-slate-400 focus:outline-none focus:border-teal-400"
-                    />
+                  {/* Location & Auto-Geolocation block */}
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <label className="block text-xs font-medium text-slate-300">
+                        Garden / Property Location
+                      </label>
+                      <button
+                        type="button"
+                        onClick={handleAutoDetectLocation}
+                        disabled={isLocating}
+                        className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-teal-400 hover:text-teal-300 transition-colors cursor-pointer bg-teal-950/70 hover:bg-teal-900/80 px-2.5 py-1 rounded-lg border border-teal-500/30"
+                      >
+                        <LocateFixed
+                          className={`w-3.5 h-3.5 ${
+                            isLocating ? "animate-spin text-teal-300" : "text-teal-400"
+                          }`}
+                        />
+                        <span>
+                          {isLocating
+                            ? "Acquiring GPS..."
+                            : locationSuccess
+                            ? "Re-detect GPS"
+                            : "Auto-Detect Location"}
+                        </span>
+                      </button>
+                    </div>
+
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                        <MapPin className="w-4 h-4 text-teal-400" />
+                      </div>
+                      <input
+                        type="text"
+                        required
+                        placeholder="e.g. Marbella, Mallorca, Estepona, Marrakech, Cascais (or click Auto-Detect)"
+                        value={b2cLocation}
+                        onChange={(e) => {
+                          setB2cLocation(e.target.value);
+                          if (locationSuccess) setLocationSuccess(false);
+                        }}
+                        className="w-full pl-9 pr-24 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.1] text-xs text-white placeholder-slate-400 focus:outline-none focus:border-teal-400"
+                      />
+                      <div className="absolute inset-y-0 right-0 pr-2 flex items-center">
+                        {locationSuccess ? (
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-500/40 text-[10px] font-mono text-emerald-300">
+                            <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                            GPS Verified
+                          </span>
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={handleAutoDetectLocation}
+                            disabled={isLocating}
+                            className="text-[10px] font-mono font-bold text-teal-400 hover:text-teal-300 px-2 py-1 rounded bg-white/[0.05] hover:bg-white/[0.1] transition-colors cursor-pointer"
+                          >
+                            {isLocating ? "Locating..." : "1-Click GPS"}
+                          </button>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Scanner radar feedback when acquiring location */}
+                    {isLocating && (
+                      <div className="p-2.5 rounded-lg bg-teal-950/40 border border-teal-500/30 flex items-center gap-2.5 text-xs text-teal-300">
+                        <RefreshCw className="w-4 h-4 animate-spin text-teal-400 shrink-0" />
+                        <span className="animate-pulse font-mono text-[11px]">
+                          Triangulating GPS fix · Querying microclimate elevation & solar model...
+                        </span>
+                      </div>
+                    )}
+
+                    {/* Geolocation error notification */}
+                    {locationError && (
+                      <div className="p-2.5 rounded-lg bg-amber-950/40 border border-amber-500/30 flex items-start gap-2 text-xs text-amber-200">
+                        <AlertCircle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                        <div className="text-[11px] leading-relaxed">
+                          {locationError}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Automated Environmental Telemetry Box when Detected */}
+                    {locationSuccess && detectedEnv && detectedCoords && (
+                      <div className="p-3 rounded-xl bg-teal-950/30 border border-teal-500/30 text-left space-y-2">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                            <span className="text-[10px] font-mono uppercase tracking-wider text-teal-300 font-bold">
+                              Auto-Derived Environmental Profile
+                            </span>
+                          </div>
+                          <span className="text-[10px] font-mono text-slate-400">
+                            {detectedCoords.formatted} ({detectedCoords.accuracy})
+                          </span>
+                        </div>
+
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 text-[10px] font-mono">
+                          <div className="p-2 rounded bg-black/40 border border-white/[0.06]">
+                            <div className="flex items-center gap-1 text-slate-400 mb-0.5">
+                              <Mountain className="w-3 h-3 text-slate-400" />
+                              <span>Elevation</span>
+                            </div>
+                            <span className="text-white font-bold">{detectedEnv.elevation}</span>
+                          </div>
+                          <div className="p-2 rounded bg-black/40 border border-white/[0.06]">
+                            <div className="flex items-center gap-1 text-slate-400 mb-0.5">
+                              <Sun className="w-3 h-3 text-amber-400" />
+                              <span>Solar Azimuth</span>
+                            </div>
+                            <span className="text-teal-300 font-bold truncate block">
+                              {detectedEnv.solarExposure}
+                            </span>
+                          </div>
+                          <div className="p-2 rounded bg-black/40 border border-white/[0.06]">
+                            <div className="flex items-center gap-1 text-slate-400 mb-0.5">
+                              <Droplets className="w-3 h-3 text-cyan-400" />
+                              <span>Live ET₀</span>
+                            </div>
+                            <span className="text-amber-300 font-bold">{detectedEnv.referenceET0}</span>
+                          </div>
+                          <div className="p-2 rounded bg-black/40 border border-white/[0.06]">
+                            <div className="flex items-center gap-1 text-slate-400 mb-0.5">
+                              <Compass className="w-3 h-3 text-emerald-400" />
+                              <span>Microclimate</span>
+                            </div>
+                            <span className="text-cyan-300 font-bold truncate block">
+                              {detectedEnv.climateClassification}
+                            </span>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-between text-[10px] text-slate-400 pt-0.5">
+                          <span className="italic">
+                            ✓ Elevation, solar radiation & weather grid auto-derived.
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setLocationSuccess(false);
+                              setB2cLocation("");
+                            }}
+                            className="text-teal-400 hover:underline cursor-pointer"
+                          >
+                            Clear
+                          </button>
+                        </div>
+                      </div>
+                    )}
+
+                    {!locationSuccess && !isLocating && !locationError && (
+                      <div className="flex items-center justify-between pt-0.5 px-1 text-[11px] text-slate-400">
+                        <span>
+                          💡 Click <strong>Auto-Detect</strong> to automatically acquire GPS, elevation & solar orientation.
+                        </span>
+                      </div>
+                    )}
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -405,6 +686,12 @@ export const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({
                 ? "Your garden location and photos have been queued for Digital Twin synthesis. We will send your initial weekly watering recommendation directly to your email."
                 : "Our engineering and agronomy team has logged your site parameters. We will review your controller architecture and schedule an exploratory technical review."}
             </p>
+
+            {locationSuccess && detectedEnv && (
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-teal-950/60 border border-teal-500/30 text-teal-300 text-[11px] font-mono mx-auto">
+                <span>✓ Auto-Derived: {detectedEnv.elevation} · {detectedEnv.referenceET0} ET₀ · {detectedEnv.solarExposure}</span>
+              </div>
+            )}
 
             <div className="pt-4">
               <button

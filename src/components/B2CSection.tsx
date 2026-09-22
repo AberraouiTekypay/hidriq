@@ -2,10 +2,10 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Sparkles, Home, Camera, Compass, Sun, ArrowRight, Info } from "lucide-react";
+import { Sparkles, Home, LocateFixed, Compass, Sun, ArrowRight, Info } from "lucide-react";
 
 interface B2CSectionProps {
-  onOpenLeadModal: (tab?: "b2c" | "b2b") => void;
+  onOpenLeadModal: (tab?: "b2c" | "b2b", autoDetect?: boolean) => void;
 }
 
 export const B2CSection: React.FC<B2CSectionProps> = ({ onOpenLeadModal }) => {
@@ -105,9 +105,9 @@ export const B2CSection: React.FC<B2CSectionProps> = ({ onOpenLeadModal }) => {
             {/* 3-Step Simple User Flow */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
               <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-                <Camera className="w-4 h-4 text-teal-400 mb-1.5" />
-                <div className="text-xs font-bold text-white">1. Snap Photos</div>
-                <div className="text-[11px] text-slate-400 mt-1">Upload 3–10 garden photos and location.</div>
+                <LocateFixed className="w-4 h-4 text-teal-400 mb-1.5" />
+                <div className="text-xs font-bold text-white">1. Auto-Detect Location</div>
+                <div className="text-[11px] text-slate-400 mt-1">1-click GPS auto-derives elevation, solar ET₀, plus photos.</div>
               </div>
               <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
                 <Compass className="w-4 h-4 text-cyan-400 mb-1.5" />
@@ -215,17 +215,27 @@ export const B2CSection: React.FC<B2CSectionProps> = ({ onOpenLeadModal }) => {
           {/* CTA Box */}
           <div className="pt-4 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="text-xs text-slate-300">
-              Start with a free assessment of your garden. No credit card, no hardware purchase required.
+              Start with a free assessment of your garden. 1-click GPS automatically determines coordinates & microclimate.
             </div>
 
-            <button
-              onClick={() => onOpenLeadModal("b2c")}
-              className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-md hover:shadow-teal-500/30 shrink-0"
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Check My Garden (Free)</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+            <div className="flex flex-wrap items-center gap-3">
+              <button
+                onClick={() => onOpenLeadModal("b2c", true)}
+                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-md hover:shadow-teal-500/30 shrink-0"
+              >
+                <LocateFixed className="w-3.5 h-3.5" />
+                <span>Auto-Detect & Check Garden</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+
+              <button
+                onClick={() => onOpenLeadModal("b2c", false)}
+                className="flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.1] text-white text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer shrink-0"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-teal-300" />
+                <span>Manual Entry</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

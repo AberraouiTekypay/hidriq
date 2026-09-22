@@ -112,3 +112,23 @@ Autonomous control is governed by hardcoded safety bounds where **safety strictl
 4. **Sensor Sanity Checks:** Discards out-of-range sensor readings ($>3\sigma$).
 5. **Confidence Threshold Fallback:** If weather forecast certainty drops below threshold, reverts automatically from **AUTOPILOT to RECOMMENDATION MODE**.
 6. **Physical & Digital Master Override:** Single-touch manual kill switch.
+
+---
+
+## 5. Automation-First Property Onboarding & Geolocation Pipeline
+
+Adhering to the core product philosophy (*"Ask the user for as little information as possible"*), property onboarding derives environmental variables automatically:
+
+1. **Automatic Geolocation (`navigator.geolocation`):**
+   - High-precision GPS coordinates ($\pm \text{accuracy}$) captured in a single click.
+   - Fallback to city/address string for remote villa owners.
+2. **Reverse Geocoding & Telemetry Ingestion (`/api/geocode/reverse`):**
+   - Resolves administrative locality (city, region, country).
+   - Ingests digital elevation models (Copernicus DEM / Open-Elevation) to determine site altitude ($m \text{ MSL}$).
+   - Computes solar azimuth angle and solar declination for aspect/slope radiation models.
+   - Calculates baseline reference evapotranspiration ($\text{ET}_0$) via FAO-56 Penman-Monteith guidelines.
+   - Binds property to nearest microclimate meteorological station grid.
+3. **User Action Minimization:**
+   - The user only uploads 3–10 garden photos and confirms ownership.
+   - No weather station purchase, no manual parameter entry, no soil lab tests required for initial digital twin generation.
+

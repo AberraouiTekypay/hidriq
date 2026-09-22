@@ -22,14 +22,17 @@ import { LeadCaptureModal } from "@/components/LeadCaptureModal";
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalTab, setModalTab] = useState<"b2c" | "b2b">("b2c");
+  const [autoDetect, setAutoDetect] = useState(false);
 
-  const handleOpenModal = (tab: "b2c" | "b2b" = "b2c") => {
+  const handleOpenModal = (tab: "b2c" | "b2b" = "b2c", autoDetectLocation = false) => {
     setModalTab(tab);
+    setAutoDetect(autoDetectLocation);
     setModalOpen(true);
   };
 
   const handleCloseModal = () => {
     setModalOpen(false);
+    setAutoDetect(false);
   };
 
   return (
@@ -87,6 +90,7 @@ export default function Home() {
         isOpen={modalOpen}
         onClose={handleCloseModal}
         defaultTab={modalTab}
+        autoDetectLocation={autoDetect}
       />
     </main>
   );
