@@ -19,9 +19,9 @@ export const B2BSection: React.FC<B2BSectionProps> = ({ onOpenLeadModal }) => {
       icon: Building2,
       description:
         "Optimize complex multi-zone landscape irrigation across hotel properties without requiring a costly hardware replacement stack. Maintain five-star visual standards while identifying unnecessary water delivery.",
-      partnerNote: "POC & Design Partner Context: Zephyr Hotels, Morocco",
+      partnerNote: "Commercial Focus: Luxury Resorts & Estates",
       actionText: "Request Hospitality Audit",
-      stageBadge: "Stage 01 · In Deployment",
+      stageBadge: "Active Commercial Beachhead",
       isLive: true,
     },
     {
@@ -35,7 +35,7 @@ export const B2BSection: React.FC<B2BSectionProps> = ({ onOpenLeadModal }) => {
         "Transition from fixed calendar runs to microclimate-aware turf management. Model elevation slopes, eliminate surface runoff with cycle-and-soak execution, and schedule pumping during off-peak electrical tariff hours.",
       partnerNote: "Designed for multi-satellite controllers (Toro, Hunter, Rain Bird)",
       actionText: "Explore Golf Capabilities",
-      stageBadge: "Stage 02 · Next",
+      stageBadge: "Commercial Expansion",
       isLive: false,
     },
     {
@@ -49,21 +49,21 @@ export const B2BSection: React.FC<B2BSectionProps> = ({ onOpenLeadModal }) => {
         "Centralized water intelligence across sprawling commercial developments, private communities, and corporate campuses. Manage heterogeneous legacy controllers through a unified vendor-neutral layer.",
       partnerNote: "Enterprise multi-site dashboard with role-based permissions",
       actionText: "Consult on Commercial Sites",
-      stageBadge: "Stage 02 · Next",
+      stageBadge: "Enterprise Portfolios",
       isLive: false,
     },
     {
       id: "agriculture",
       title: "HIGH-VALUE AGRICULTURE",
       subtitle: "Orchards, Vineyards & Specialty Crops",
-      tag: "Stage 3 Opportunity",
+      tag: "Agricultural Expansion",
       image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80",
       icon: Sprout,
       description:
         "The same core water intelligence will expand to high-value agriculture. Moving from landscape aesthetics to optimizing water allocation by crop phenology, variety, and root zone to maximize economic yield value per cubic metre.",
-      partnerNote: "Architecture is agriculture-ready from Day 1 (Farm → Field → Block → Crop)",
+      partnerNote: "Architecture is agriculture-ready (Farm → Field → Block → Crop)",
       actionText: "Join Agriculture Waitlist",
-      stageBadge: "Stage 03 · Coming Soon",
+      stageBadge: "Future Vertical · Waitlist",
       isLive: false,
     },
   ];

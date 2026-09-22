@@ -75,3 +75,16 @@
 ## ADR 011: Autopilot Safety Model & Confidence-Based Fallback (Master V3)
 - **Context:** Premature or unconstrained autonomous valve actuation risks flooding or catastrophic landscape damage.
 - **Decision:** Enforce hardcoded daily volumetric caps, zone runtime limits, freeze/rain interlocks, and confidence fallbacks. If forecast confidence drops below threshold, the system automatically reverts from **AUTOPILOT to RECOMMENDATION MODE**. Safety strictly overrides optimization.
+
+---
+
+## ADR 012: Commercial Landing Page Focus & Funnel Streamlining
+- **Context:** Displaying internal venture stage roadmaps and early design-partner trial callouts directly on the main landing page clutters customer acquisition and distracts from core product capabilities.
+- **Decision:** Tailor the public landing page strictly to commercial conversion (Startups / Enterprises / Homeowners). Internal strategic roadmaps and design-partner POC milestones are maintained in dedicated venture documentation (`docs/POC-ZEPHYR.md`, `docs/ROADMAP.md`).
+
+---
+
+## ADR 013: Immediate Gratification Assessment & Conversion Funnel
+- **Context:** Delaying assessment results ("we will email you next week") causes high funnel abandonment and fails to demonstrate instant product intelligence.
+- **Decision:** Deliver an **immediate, interactive Water Intelligence Plan on screen**. The user immediately sees their optimal weekly volume, annual savings, optimal pre-dawn window (05:30–06:15 AM), 7-day run-sheet, 1-click WhatsApp export for groundskeepers, and an opt-in hook for recurring automated weather sync.
+

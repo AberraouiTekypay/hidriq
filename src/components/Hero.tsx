@@ -187,8 +187,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenLeadModal }) => {
 
               {/* Real World Validation Note */}
               <div className="flex items-center justify-between pt-1 text-[11px] text-slate-400">
-                <span>POC Context: Zephyr Hotels</span>
-                <span className="text-slate-400 font-mono">Illustrative telemetry</span>
+                <span>Commercial Beachhead: Luxury Hospitality</span>
+                <span className="text-slate-400 font-mono">Real-time simulation</span>
               </div>
             </div>
           </div>

@@ -13,8 +13,6 @@ import { B2CSection } from "@/components/B2CSection";
 import { SecondHomeSection } from "@/components/SecondHomeSection";
 import { HardwarePhilosophy } from "@/components/HardwarePhilosophy";
 import { AutomationLevelsSection } from "@/components/AutomationLevelsSection";
-import { ZephyrPocSection } from "@/components/ZephyrPocSection";
-import { RoadmapSection } from "@/components/RoadmapSection";
 import { CtaBanner } from "@/components/CtaBanner";
 import { Footer } from "@/components/Footer";
 import { LeadCaptureModal } from "@/components/LeadCaptureModal";
@@ -73,16 +71,10 @@ export default function Home() {
       {/* 12. Nine Levels of Water Automation & Autopilot Safety Model */}
       <AutomationLevelsSection />
 
-      {/* 13. Zephyr Hotels POC (Built in the Real World: Morocco Hospitality Beachhead) */}
-      <ZephyrPocSection onOpenLeadModal={handleOpenModal} />
-
-      {/* 14. Strategic Roadmap (4 Stages & Dual Traction Curves) */}
-      <RoadmapSection />
-
-      {/* 15. Conversion Call to Action */}
+      {/* 13. Conversion Call to Action */}
       <CtaBanner onOpenLeadModal={handleOpenModal} />
 
-      {/* 16. Footer with Exact EM300 Attribution */}
+      {/* 14. Footer with Exact EM300 Attribution */}
       <Footer onOpenLeadModal={handleOpenModal} />
 
       {/* Interactive Assessment & Enterprise Lead Capture Modal */}

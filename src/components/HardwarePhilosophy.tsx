@@ -9,7 +9,7 @@ interface HardwarePhilosophyProps {
 
 export const HardwarePhilosophy: React.FC<HardwarePhilosophyProps> = ({ onOpenLeadModal }) => {
   return (
-    <section className="relative py-24 sm:py-32 bg-[#07090d] border-t border-white/[0.06] overflow-hidden">
+    <section id="hardware" className="relative py-24 sm:py-32 bg-[#07090d] border-t border-white/[0.06] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-16 text-left">

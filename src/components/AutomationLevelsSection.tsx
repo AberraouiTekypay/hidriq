@@ -82,7 +82,7 @@ export const AutomationLevelsSection: React.FC = () => {
   ];
 
   return (
-    <section className="relative py-24 sm:py-32 bg-[#080b10] border-t border-white/[0.06] overflow-hidden">
+    <section id="automation" className="relative py-24 sm:py-32 bg-[#080b10] border-t border-white/[0.06] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-16 text-left">

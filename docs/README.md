@@ -41,6 +41,9 @@ $$\text{PREDICT} \longrightarrow \text{ACT} \longrightarrow \text{MEASURE} \long
 4. **Stage 4 (FUTURE) — Water Infrastructure:**
    - District-level water optimization, municipal landscape networks, basin-scale predictive modeling, and water asset intelligence.
 
+> **Note on Commercial Landing Page Architecture:**  
+> The public commercial landing page ([`src/app/page.tsx`](file:///C:/hidriq/src/app/page.tsx)) is tailored strictly for high-conversion startup and enterprise acquisition. Internal venture milestone sequences and early single-partner design briefs are housed in dedicated venture documentation ([`docs/ROADMAP.md`](file:///C:/hidriq/docs/ROADMAP.md) and [`docs/POC-ZEPHYR.md`](file:///C:/hidriq/docs/POC-ZEPHYR.md)).
+
 ---
 
 ## Documentation Index

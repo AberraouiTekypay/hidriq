@@ -133,16 +133,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLeadModal }) => {
                 Property Audit →
               </button>
               <a
-                href="#poc"
+                href="#automation"
                 className="py-1 text-xs text-slate-400 hover:text-white transition-colors"
               >
-                Zephyr Case Study
+                Automation Levels
               </a>
               <a
-                href="#roadmap"
+                href="#hardware"
                 className="py-1 text-xs text-slate-400 hover:text-white transition-colors"
               >
-                Venture Roadmap
+                Hardware Architecture
               </a>
             </div>
           </div>
