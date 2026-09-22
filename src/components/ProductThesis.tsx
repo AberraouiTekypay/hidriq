@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowDown, Check, Layers, Cpu, Radio, RotateCcw, CloudSun, Compass, ShieldCheck } from "lucide-react";
+import { ArrowDown, Cpu, Compass } from "lucide-react";
 
 export const ProductThesis: React.FC = () => {
   const [activeStep, setActiveStep] = useState<number>(0);

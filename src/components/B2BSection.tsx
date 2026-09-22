@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Building2, Flag, Trees, Sprout, ArrowRight, ShieldCheck } from "lucide-react";
+import { Building2, Flag, Trees, Sprout, ArrowRight } from "lucide-react";
 
 interface B2BSectionProps {
   onOpenLeadModal: (tab?: "b2c" | "b2b") => void;

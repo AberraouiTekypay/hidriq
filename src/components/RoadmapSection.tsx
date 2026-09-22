@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Milestone, CheckCircle2, Clock, Sparkles, Building2, Sprout, Globe } from "lucide-react";
+import { Milestone } from "lucide-react";
 
 export const RoadmapSection: React.FC = () => {
   const stages = [

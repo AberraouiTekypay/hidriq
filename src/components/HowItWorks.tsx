@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Eye, TrendingUp, Sliders, Zap, CheckCircle2, ChevronRight } from "lucide-react";
+import { Eye, TrendingUp, Sliders, Zap, CheckCircle2 } from "lucide-react";
 
 export const HowItWorks: React.FC = () => {
   const [activeMode, setActiveMode] = useState<"analyze" | "recommend" | "autopilot">("analyze");

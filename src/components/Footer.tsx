@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Droplets, ArrowUpRight, Shield, FileText, Cookie } from "lucide-react";
+import { Droplets } from "lucide-react";
 
 interface FooterProps {
   onOpenLeadModal: (tab?: "b2c" | "b2b") => void;

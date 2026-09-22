@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Building2, CheckCircle2, ShieldCheck, ArrowUpRight, Compass, Activity } from "lucide-react";
+import { Building2, ArrowUpRight } from "lucide-react";
 
 interface ZephyrPocSectionProps {
   onOpenLeadModal: (tab?: "b2c" | "b2b") => void;

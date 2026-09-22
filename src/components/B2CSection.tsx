@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Sparkles, Home, Camera, Compass, CloudRain, Sun, CheckCircle2, ArrowRight, Info } from "lucide-react";
+import { Sparkles, Home, Camera, Compass, Sun, ArrowRight, Info } from "lucide-react";
 
 interface B2CSectionProps {
   onOpenLeadModal: (tab?: "b2c" | "b2b") => void;

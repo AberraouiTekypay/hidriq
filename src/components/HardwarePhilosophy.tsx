@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Cpu, Plus, Layers, CheckCircle2, Shield, Wrench, ArrowRight } from "lucide-react";
+import { Cpu, Plus, Layers, Shield, Wrench, ArrowRight } from "lucide-react";
 
 interface HardwarePhilosophyProps {
   onOpenLeadModal: (tab?: "b2c" | "b2b") => void;
@@ -106,6 +106,17 @@ export const HardwarePhilosophy: React.FC<HardwarePhilosophyProps> = ({ onOpenLe
               Where cloud APIs do not exist on legacy 24VAC controllers, low-cost modular dry-contact relay bridges enable remote schedule actuation without disturbing existing wiring harness layouts.
             </p>
           </div>
+        </div>
+
+        {/* Action Callout */}
+        <div className="mt-12 text-center">
+          <button
+            onClick={() => onOpenLeadModal("b2b")}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.12] text-white text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
+          >
+            <span>Inquire About Your Installed Controllers</span>
+            <ArrowRight className="w-3.5 h-3.5 text-teal-400" />
+          </button>
         </div>
       </div>
     </section>

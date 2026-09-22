@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Database, Cpu, CloudRain, Gauge, Activity, Radio, AlertOctagon, Check } from "lucide-react";
+import { Database, Cpu, CloudRain, Gauge, Activity, Radio } from "lucide-react";
 
 export const IntelligenceEngine: React.FC = () => {
   const [activeEngine, setActiveEngine] = useState<number>(0);

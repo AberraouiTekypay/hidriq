@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { Clock, AlertTriangle, CheckCircle2, CloudRain, SunMedium, Wind, Thermometer } from "lucide-react";
 
 export const ProblemSection: React.FC = () => {

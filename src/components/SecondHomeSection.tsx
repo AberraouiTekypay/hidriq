@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { ShieldCheck, AlertCircle, CloudRain, Bell, ArrowRight, PlaneTakeoff } from "lucide-react";
+import { CloudRain, Bell, ArrowRight, PlaneTakeoff } from "lucide-react";
 
 interface SecondHomeProps {
   onOpenLeadModal: (tab?: "b2c" | "b2b") => void;

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { X, Sparkles, Building2, Home, CheckCircle2, UploadCloud, ArrowRight, ShieldCheck } from "lucide-react";
+import { X, Sparkles, Building2, Home, CheckCircle2, UploadCloud, ShieldCheck } from "lucide-react";
 
 interface LeadCaptureModalProps {
   isOpen: boolean;
@@ -18,12 +18,20 @@ export const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
+  // Sync tab when opening or defaultTab changes via close / reopen
+  const [prevDefaultTab, setPrevDefaultTab] = useState(defaultTab);
+  if (defaultTab !== prevDefaultTab) {
+    setPrevDefaultTab(defaultTab);
+    setActiveTab(defaultTab);
+    setSubmitted(false);
+  }
+
   // B2C Form State
   const [b2cLocation, setB2cLocation] = useState("");
   const [b2cEmail, setB2cEmail] = useState("");
   const [b2cGardenType, setB2cGardenType] = useState("Lawn & Mediterranean Shrubs");
   const [b2cWaterMethod, setB2cWaterMethod] = useState("Hose / Manual Taps");
-  const [b2cPhotosSelected, setB2cPhotosSelected] = useState(3);
+  const b2cPhotosSelected = 3;
 
   // B2B Form State
   const [b2bName, setB2bName] = useState("");
@@ -33,11 +41,6 @@ export const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({
   const [b2bCountry, setB2bCountry] = useState("Morocco");
   const [b2bController, setB2bController] = useState("Rain Bird");
   const [b2bMessage, setB2bMessage] = useState("");
-
-  useEffect(() => {
-    setActiveTab(defaultTab);
-    setSubmitted(false);
-  }, [defaultTab, isOpen]);
 
   // Handle ESC key
   useEffect(() => {
@@ -95,12 +98,17 @@ export const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({
     setSubmitted(true);
   };
 
+  const handleClose = () => {
+    setSubmitted(false);
+    onClose();
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
       <div className="relative w-full max-w-xl rounded-2xl glass-panel border border-white/[0.15] bg-[#0c1017] p-6 sm:p-8 text-left shadow-2xl teal-glow my-8">
         {/* Close Button */}
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="absolute top-5 right-5 p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/[0.05] transition-colors cursor-pointer"
           aria-label="Close dialog"
         >
@@ -400,7 +408,7 @@ export const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({
 
             <div className="pt-4">
               <button
-                onClick={onClose}
+                onClick={handleClose}
                 className="px-6 py-2.5 rounded-full bg-white/[0.08] hover:bg-white/[0.15] text-white text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
               >
                 Return to Site
