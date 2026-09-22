@@ -2,7 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
-import { ArrowRight, Sparkles, Building2, Droplet, Sun, Wind, Activity } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Sparkles, Building2, Droplet, Sun, Wind, Activity, Layers } from "lucide-react";
 
 interface HeroProps {
   onOpenLeadModal: (tab?: "b2c" | "b2b") => void;
@@ -83,6 +84,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenLeadModal }) => {
                 <Building2 className="w-4 h-4 text-slate-300" />
                 <span>Optimize Your Property</span>
               </button>
+
+              {/* V4 Property Dashboard Link */}
+              <Link
+                href="/dashboard"
+                className="flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-teal-950/40 hover:bg-teal-900/60 border border-teal-500/30 hover:border-teal-500/50 text-teal-300 font-medium text-sm tracking-wide backdrop-blur-md transition-all cursor-pointer"
+              >
+                <Layers className="w-4 h-4 text-teal-400" />
+                <span>Property Dashboard</span>
+              </Link>
             </div>
 
             {/* Hardware-Neutral & Stage Notice */}
@@ -188,7 +198,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenLeadModal }) => {
               {/* Real World Validation Note */}
               <div className="flex items-center justify-between pt-1 text-[11px] text-slate-400">
                 <span>Commercial Beachhead: Luxury Hospitality</span>
-                <span className="text-slate-400 font-mono">Real-time simulation</span>
+                <Link
+                  href="/dashboard"
+                  className="text-teal-400 hover:text-teal-300 font-mono transition-colors"
+                >
+                  Explore Digital Twin →
+                </Link>
               </div>
             </div>
           </div>

@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Sparkles, Home, LocateFixed, Compass, Sun, ArrowRight, Info } from "lucide-react";
+import Link from "next/link";
+import { Sparkles, Home, LocateFixed, Compass, Sun, ArrowRight, Info, Layers } from "lucide-react";
 
 interface B2CSectionProps {
   onOpenLeadModal: (tab?: "b2c" | "b2b", autoDetect?: boolean) => void;
@@ -235,6 +236,14 @@ export const B2CSection: React.FC<B2CSectionProps> = ({ onOpenLeadModal }) => {
                 <Sparkles className="w-3.5 h-3.5 text-teal-300" />
                 <span>Manual Entry</span>
               </button>
+
+              <Link
+                href="/dashboard"
+                className="flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-teal-950/40 hover:bg-teal-900/60 border border-teal-500/30 text-teal-300 text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer shrink-0"
+              >
+                <Layers className="w-3.5 h-3.5 text-teal-400" />
+                <span>Open Property Twin Demo</span>
+              </Link>
             </div>
           </div>
         </div>

@@ -67,8 +67,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenLeadModal }) => {
             ))}
           </nav>
 
-          {/* Desktop Dual Action Buttons */}
+          {/* Desktop Action Buttons */}
           <div className="hidden lg:flex items-center gap-3">
+            {/* Direct Link to Persistent Property Dashboard */}
+            <Link
+              href="/dashboard"
+              className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold tracking-wide rounded-full text-slate-300 hover:text-white bg-white/[0.04] border border-white/[0.1] hover:border-teal-500/40 transition-all cursor-pointer"
+              title="Open persistent digital property assets"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
+              <span>Property Dashboard</span>
+            </Link>
+
             {/* B2C Self-Service CTA */}
             <button
               onClick={() => onOpenLeadModal("b2c")}
@@ -123,6 +133,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenLeadModal }) => {
             ))}
           </div>
           <div className="pt-4 border-t border-white/[0.08] flex flex-col gap-2.5">
+            <Link
+              href="/dashboard"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold text-white bg-white/[0.06] border border-teal-500/40"
+            >
+              <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
+              <span>Enter Property Dashboard</span>
+            </Link>
+
             <button
               onClick={() => {
                 setMobileMenuOpen(false);

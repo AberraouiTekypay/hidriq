@@ -88,3 +88,33 @@
 - **Context:** Delaying assessment results ("we will email you next week") causes high funnel abandonment and fails to demonstrate instant product intelligence.
 - **Decision:** Deliver an **immediate, interactive Water Intelligence Plan on screen**. The user immediately sees their optimal weekly volume, annual savings, optimal pre-dawn window (05:30–06:15 AM), 7-day run-sheet, 1-click WhatsApp export for groundskeepers, and an opt-in hook for recurring automated weather sync.
 
+---
+
+## ADR 014: Persistent Property Asset Model vs. Ephemeral Garden Form
+- **Context:** Treating garden input as a one-time form or questionnaire requires returning users to start over, destroying customer retention and preventing longitudinal learning.
+- **Decision:** Elevate **Property** to the primary persistent entity in HIDRIQ (`USER -> PROPERTIES[]`). Properties are permanently stored with full digital twins, spatial polygons, multi-overlay status, and audit history. Returning users land immediately in their asset command center ("WELCOME BACK").
+- **Consequences:** Users can manage multi-property portfolios (e.g. Marbella Villa + Madrid House + Mallorca Villa) with 1-click switching.
+
+---
+
+## ADR 015: User Ground-Truth Calibration & Longitudinal Change Detection
+- **Context:** Automated vision models and remote sensing will occasionally misclassify vegetation or irrigation hardware. Furthermore, sudden notifications about dry patches can induce user panic.
+- **Decision:** 
+  1. **User Corrections Become Data:** Any edit made by an operator in a zone drawer is written into immutable zone memory (`userCorrections[]`), tuning the agronomic water model and logging a `Memory Calibrated` audit event.
+  2. **Non-Alarmist Change Detection:** Visual anomalies between sequential photos are framed as inquisitive investigation prompts (e.g. *"Slight color variation detected on west perimeter — check emitter #4 for mineral deposit"*) rather than alarming alerts.
+
+---
+
+## ADR 016: Deterministic Agronomic Physics vs. Generative LLM Recommendations (Master V5)
+- **Context:** Using Large Language Models (LLMs) or black-box generative AI to invent irrigation run-times leads to hallucinated volumes, catastrophic plant overwatering, or root asphyxiation.
+- **Decision:** Irrigation calculations are strictly **deterministic**, grounded in ASCE FAO-56 Penman-Monteith, dual crop coefficients ($K_c$), soil water depletion ($TAW, RAW$), and USDA-SCS effective rainfall. LLMs are explicitly prohibited from calculating water volumes or runtimes.
+- **Consequences:** Verifiable physical truth, regulatory defensibility, and trust from commercial agronomic operators.
+
+---
+
+## ADR 017: Transparent 8-Point Explainability and Runtime Honesty (Master V5)
+- **Context:** Black-box recommendations undermine operator trust, and fabricating precision when hardware precipitation rates are unknown misleads users.
+- **Decision:** 
+  1. Every recommendation must answer the 8 mandatory physical questions (Why required? How much? Why now? Why this zone? Supporting data? Assumptions? Confidence breakdown? What would change it?).
+  2. If emitter precipitation rate is unknown, HIDRIQ **explicitly refuses to guess exact runtime**, stating that water depth is estimated and runtime cannot yet be calculated reliably until nozzle flow rates are verified.
+

@@ -77,6 +77,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLeadModal }) => {
                   Verification & Leaks
                 </a>
               </li>
+              <li>
+                <Link href="/dashboard" className="text-teal-400 hover:text-teal-300 font-medium transition-colors flex items-center gap-1.5">
+                  <span>Property Dashboard</span>
+                  <span className="text-[9px] font-mono px-1 py-0.2 rounded bg-teal-500/20 text-teal-300 border border-teal-500/30">V4</span>
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -132,6 +138,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLeadModal }) => {
               >
                 Property Audit →
               </button>
+              <Link
+                href="/dashboard"
+                className="text-left py-1 text-xs text-teal-400 hover:text-teal-300 font-semibold transition-colors flex items-center gap-1"
+              >
+                <span>My Properties (Dashboard) →</span>
+              </Link>
               <a
                 href="#automation"
                 className="py-1 text-xs text-slate-400 hover:text-white transition-colors"
