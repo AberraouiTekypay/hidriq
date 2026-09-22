@@ -1,95 +1,77 @@
-# HIDRIQ — Architectural Decision Records (ADRs)
+# HIDRIQ — Master Architectural Decision Records (ADRs)
 
+**Document Status:** Master Version 3.0  
 **Company:** HIDRIQ ([hidriq.com](https://hidriq.com))  
 **Positioning:** Water Intelligence  
-**Parent Venture:** An EM300.co Company  
+**Corporate Entity:** An EM300.co Company  
 
 ---
 
 ## ADR 001: Independent Software Layer vs. Proprietary Hardware
-
-### Context
-Incumbents like Rain Bird, Hunter, Toro, and Netafim make the vast majority of their margins by selling proprietary controllers, valves, and decoders. Entering the market as another hardware company requires massive CAPEX, injection molding, inventory carrying costs, distributor relationships, and long sales cycles.
-
-### Decision
-HIDRIQ is structured strictly as an **independent, vendor-neutral water intelligence and optimization software layer**. We adopt the positioning: *“Your infrastructure. Our intelligence.”* Existing irrigation infrastructure is preserved wherever technically feasible.
-
-### Consequences
-- **Pros:** Fast sales velocity, zero supply chain risk, capital efficiency, multi-site portfolio appeal.
-- **Cons:** Requires building robust software adapters for legacy protocols and dealing with varying vendor API availability.
+- **Decision:** HIDRIQ is structured strictly as an **independent, vendor-neutral water intelligence and optimization software layer**. We adopt the positioning: *“Your infrastructure. Our intelligence.”* Existing irrigation infrastructure is preserved wherever technically feasible.
+- **Consequences:** Capital efficiency, fast sales cycles, zero supply chain risk, multi-site portfolio appeal.
 
 ---
 
 ## ADR 002: Core B2C Offering — Manual Garden Mode & Digital Twins
-
-### Context
-Smart sprinkler controllers (e.g., Rachio) only target homes with pre-installed, multi-valve electronic in-ground irrigation. Over 80% of residential garden owners globally—including owners of luxury Mediterranean second homes—water manually or using basic spigots and hoses.
-
-### Decision
-Elevate **Manual Garden Mode** to a core B2C product. Users upload location and 3–10 garden photos; HIDRIQ constructs an approximate **Garden Digital Twin** that classifies vegetation, exposure, and approximate zones to deliver human-readable weekly watering schedules.
-
-### Explicit Caveat
-We explicitly state in all documentation and UI that photographs alone do **not** measure soil moisture; they establish vegetation taxonomy, canopy density, and microclimate exposure, which is then computed against numerical weather and $ET_0$ physics models.
+- **Decision:** Elevate **Manual Garden Mode** to a core B2C product. Users provide location and targeted garden photos; HIDRIQ constructs a **Garden Digital Twin** classifying vegetation, exposure, and zones to deliver weekly watering schedules without requiring smart controllers.
+- **Explicit Caveat:** Photographs alone do **not** measure subsurface soil moisture. Photos classify taxonomy and canopy, which is then computed against numerical weather and $ET_0$ physics models.
 
 ---
 
 ## ADR 003: Hospitality Beachhead (Zephyr Hotels) Prior to Agriculture
-
-### Context
-Agriculture consumes ~70% of global freshwater withdrawals, representing the largest absolute market. However, agricultural sales cycles are seasonal, margins are tight, and farmers are risk-averse to experimental software.
-
-### Decision
-Launch with **Hospitality Landscaping (Hotels & Resorts)** as the commercial beachhead, validated through an initial design partnership with **Zephyr Hotels in Morocco**.
-
-### Rationale
-- Resorts have high aesthetic standards, concentrated water bills, immediate budget authority, and year-round operations.
-- The underlying architecture is built **agriculture-ready** from Day 1 (`Farm → Field → Block → Crop`), enabling a seamless expansion into high-value agriculture as Stage 3.
+- **Decision:** Launch with **Hospitality Landscaping (Hotels & Resorts)** in Morocco as the commercial beachhead via **Zephyr Hotels**.
+- **Rationale:** High aesthetic standards, concentrated water bills, year-round operation. The architecture is built **agriculture-ready** from Day 1 (`Farm → Field → Block → Crop`), enabling a seamless expansion into high-value agriculture as Stage 3.
 
 ---
 
 ## ADR 004: Disciplined Truth & No Fabricated Savings Percentages
-
-### Context
-Many climate-tech startups claim generic *"Save 50% on your water bill!"* without baseline empirical evidence. This undermines credibility with experienced engineers, agronomists, and institutional hotel operators.
-
-### Decision
-HIDRIQ prohibits the publication of unsubstantiated percentage savings claims. The platform communicates its physical methodology (FAO-56 Penman-Monteith, microclimate modeling) and clearly marks the Zephyr Hotels engagement as an active **POC / Design Partner**, committing to publishing only audited empirical results upon POC completion.
+- **Decision:** Prohibit the publication of unsubstantiated percentage savings claims. The platform communicates its physical methodology and marks the Zephyr Hotels engagement as an active **POC / Design Partner**, committing to publishing only audited empirical results upon POC completion.
 
 ---
 
 ## ADR 005: Operational Progression (Analyze → Recommend → Autopilot)
-
-### Context
-Groundskeepers and landscape managers are reluctant to hand total control of expensive landscapes to autonomous software on Day 1.
-
-### Decision
-Structure customer onboarding into three distinct operational modes:
-1. **Analyze:** Shadow mode auditing baseline schedules against weather physics without physical intervention.
-2. **Recommend:** Generating daily/weekly run-sheets for manual operator sign-off.
-3. **Autopilot:** Closed-loop automated valve execution only where supported integrations exist and after operator confidence is established.
+- **Decision:** Structure customer onboarding into three distinct operational modes:
+  1. **Analyze (Shadow Mode):** Auditing baseline schedules against weather physics without physical intervention.
+  2. **Recommend:** Generating daily/weekly run-sheets for manual operator sign-off.
+  3. **Autopilot:** Closed-loop automated valve execution only where supported integrations exist and after operator confidence is established.
 
 ---
 
 ## ADR 006: Visual & Design Language
-
-### Context
-Water technology websites often fall into generic clichés (blue water droplets, cartoon leaves, hands holding soil, cheap SaaS dashboards).
-
-### Decision
-Adopt a **cinematic, high-end infrastructure and deep-tech aesthetic**:
-- Dark cinematic hero and technical sections contrasted with elegant editorial panels.
-- Deep charcoal/near-black backgrounds with restrained teal/aquatic accents.
-- Sophisticated sans-serif typography, generous whitespace, and high-resolution aerial imagery.
-- Subtle data overlays showing the physical-to-digital translation without sci-fi gimmickry.
+- **Decision:** Adopt a **cinematic, high-end infrastructure and deep-tech aesthetic**:
+  - Dark cinematic hero and technical sections contrasted with elegant editorial panels.
+  - Deep charcoal/near-black backgrounds with restrained teal/aquatic accents.
+  - Interactive Living Digital Twin spatial explorer as the visual centerpiece.
 
 ---
 
 ## ADR 007: Venture Identity & Governance
+- **Decision:** The footer across all web properties and documents must contain the exact, unaltered attribution:
+  > **“An EM300.co Company”**
 
-### Context
-HIDRIQ is founded under the EM300 venture umbrella.
+---
 
-### Decision
-The footer across all web properties and documents must contain the exact, unaltered attribution:
-> **“An EM300.co Company”**
-No variations (such as *"Powered by EM300"* or *"Part of EM300"*) are permitted.
+## ADR 008: A Living Digital Twin of Every Managed Landscape (Master V3)
+- **Context:** Treating HIDRIQ as merely an irrigation timer dashboard limits long-term venture enterprise value.
+- **Decision:** Define the product destination as **a Living Digital Twin of every managed landscape**, with water intelligence as its foundational first layer.
+- **Consequences:** Enables subsequent intelligence layers: plant stress, visual anomaly detection, leak localization, and predictive maintenance.
+
+---
+
+## ADR 009: Provider-Agnostic Multi-Source Abstraction Layer (Master V3)
+- **Context:** Relying on a single geospatial, satellite, or weather vendor creates platform vulnerability and vendor lock-in.
+- **Decision:** Build modular provider abstractions (`IGeospatialProvider`, `IWeatherProvider`, `ISatelliteProvider`, `IControllerProvider`, `IMeterProvider`).
+- **Consequences:** HIDRIQ can switch from open-source Sentinel-2 to commercial PlanetScope, or from Open-Meteo to ECMWF HRES, without touching core engine logic.
+
+---
+
+## ADR 010: Automation-First User Onboarding (Master V3)
+- **Context:** Requiring users to fill out complex forms or manually trace garden zones creates high friction and abandon rates.
+- **Decision:** Adopt the philosophy: **“Ask the user for as little information as possible.”** Automatically derive location, elevation, terrain, weather, and garden zones. Present an initial discovery pass and ask simple confirmation questions. Request photos only to resolve specific system ambiguities.
+
+---
+
+## ADR 011: Autopilot Safety Model & Confidence-Based Fallback (Master V3)
+- **Context:** Premature or unconstrained autonomous valve actuation risks flooding or catastrophic landscape damage.
+- **Decision:** Enforce hardcoded daily volumetric caps, zone runtime limits, freeze/rain interlocks, and confidence fallbacks. If forecast confidence drops below threshold, the system automatically reverts from **AUTOPILOT to RECOMMENDATION MODE**. Safety strictly overrides optimization.

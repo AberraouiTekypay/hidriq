@@ -22,6 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenLeadModal }) => {
 
   const navLinks = [
     { label: "Technology", href: "#technology" },
+    { label: "Digital Twin", href: "#digital-twin" },
     { label: "Business", href: "#business" },
     { label: "Home & Garden", href: "#home" },
     { label: "Zephyr POC", href: "#poc" },

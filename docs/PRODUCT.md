@@ -1,171 +1,155 @@
-# HIDRIQ — Product Thesis & Strategy
+# HIDRIQ — Master Product Thesis & Strategy
 
-**Document Status:** Version 2.0  
+**Document Status:** Master Version 3.0 (Supersedes V1 & V2)  
 **Domain:** [hidriq.com](https://hidriq.com)  
-**Positioning:** Water Intelligence  
-**Core Promise:** The intelligence layer for water.  
+**Positioning:** WATER INTELLIGENCE  
+**Core Statement:** “The intelligence layer for water.”  
+**Supporting Line:** “Predict. Optimize. Automate.”  
+**Corporate Entity:** An EM300.co Company  
 
 ---
 
-## 1. What HIDRIQ Is (and What It Is Not)
+## 1. Company Classification & Category
+
+HIDRIQ is positioned primarily as:
+- **ClimateTech / WaterTech** with a major **AgriTech** application.
+- Supporting application verticals: **HospitalityTech**, **PropTech**, and **Golf / Landscape Technology**.
+
+HIDRIQ is **not** positioned as an agriculture-only company. Water intelligence is the core horizontal platform capable of operating across:
+- Private gardens, luxury villas, and second homes (**HIDRIQ HOME**).
+- Hotels, luxury resorts, golf courses, and commercial campuses (**HIDRIQ BUSINESS**).
+- Specialty orchards, vineyards, and greenhouses (**HIDRIQ AGRI** — Stage 3).
+- District water utilities, municipal parks, and basin-scale networks (**HIDRIQ INFRASTRUCTURE** — Stage 4).
+
+---
+
+## 2. Core Product Thesis & Strategic Identity
 
 ### What HIDRIQ Is
 - A **vendor-neutral water intelligence and optimization layer** designed to sit between environmental reality and physical irrigation infrastructure.
-- Powered by **HIDRIQ CORE**, a common intelligence engine serving two parallel distribution channels:
-  - **HIDRIQ BUSINESS:** Hospitality (hotels & resorts), golf courses, commercial landscapes, and high-value agriculture.
-  - **HIDRIQ HOME:** Luxury villas, holiday properties, second homes, and private gardens.
-- A software-first, API-driven platform that integrates weather forecasts, evapotranspiration ($ET_0$), solar radiation, precipitation probability, soil hydrology assumptions, and property-level landscape characteristics to determine **how much water should be delivered, when, and where**.
-- An operational workflow engine that supports progressive automation:
-  $$\text{ANALYZE} \longrightarrow \text{RECOMMEND} \longrightarrow \text{AUTOPILOT}$$
-- An international platform **built from Morocco and Spain**, designed for water-stressed markets worldwide.
-
-### Geographic Go-To-Market Strategy
-HIDRIQ executes a targeted, dual-geography market entry:
-- **B2B Beachhead — Morocco:** Leveraging enterprise relationships, particularly design partner **Zephyr Hotels**, to establish deep operational credibility, prove physical water balancing on luxury resort grounds, and audit multi-zone commercial controllers in a rigorous semi-arid climate.
-- **B2C Beachhead — Spain:** Launching **HIDRIQ HOME** as a digitally distributed, self-service consumer product targeting premier Mediterranean residential markets: **Costa del Sol, Marbella, Estepona, Sotogrande, Mallorca, Alicante, Valencia, and Murcia**, followed by Portugal (Algarve), Italy, Greece, and southern France.
-- **Global Ambition:** HIDRIQ is neither a "Moroccan startup" nor a single-country tool. It is an international water intelligence company built for water-stressed regions globally.
+- Built on a single fundamental question:
+  > **“Given what we know about this land, vegetation/crop, weather, soil and infrastructure, how much water should be delivered, when, and where?”**
+- Powered by a continuous, physical feedback loop:
+  $$\text{OBSERVE} \longrightarrow \text{PREDICT} \longrightarrow \text{ACT} \longrightarrow \text{MEASURE} \longrightarrow \text{LEARN}$$
+- An international platform **built from Morocco and Spain**, designed for water-stressed environments globally.
 
 ### What HIDRIQ Is Not
-- **NOT an irrigation hardware manufacturer:** HIDRIQ does not seek to replace millions of dollars of existing buried valves, solenoid wiring, or multi-station controllers.
-- **NOT simply another smart timer:** Unlike residential WiFi controllers that apply static +/- percentage rain pauses based on nearest municipal airport weather, HIDRIQ runs deterministic water demand and microclimate energy-balance models.
-- **NOT an ESG vanity dashboard:** HIDRIQ focuses on operational water physics and valve-level delivery rather than retrospective sustainability reporting.
-- **NOT initially an agriculture company:** While designed from Day 1 with an agriculture-ready schema (`Farm → Field → Block → Crop`), commercial agriculture is explicitly **Stage 3** in the company's roadmap.
+- **NOT an irrigation hardware company:** Does not replace valves, solenoids, or controllers.
+- **NOT a sensor manufacturer:** Sensors are optional accuracy upgrades, never mandatory prerequisites.
+- **NOT a generic ESG dashboard:** Focuses on operational physical delivery rather than retrospective sustainability PR.
+- **NOT a consumer smart sprinkler gadget:** Does not require electronic smart controllers; works natively with manual hoses via Manual Garden Mode.
 
 ---
 
-## 2. The Core Problem: Fixed Clocks vs. Variable Physics
+## 3. The Bigger Product Vision: A Living Digital Twin of Every Managed Landscape
 
-Much of the world’s installed irrigation infrastructure continues to operate on static calendar schedules programmed weeks or months earlier:
+HIDRIQ does not build isolated water dashboards. The strategic product destination is:
+> **A Living Digital Twin of every managed landscape, with water intelligence as its foundational operational layer.**
 
-```
-CURRENT PRACTICE (Scheduled Guesswork):
-┌─────────────────────────┐
-│ Tuesday   | 06:00 | 20m │
-│ Thursday  | 06:00 | 20m │  ===> Fixed delivery regardless of rain,
-│ Saturday  | 06:00 | 20m │       wind, humidity, or soil moisture
-└─────────────────────────┘
-```
+The Digital Twin progressively models:
+$$\text{Property} \longrightarrow \text{Landscape} \longrightarrow \text{Zones} \longrightarrow \text{Vegetation} \longrightarrow \text{Terrain} \longrightarrow \text{Soil} \longrightarrow \text{Weather} \longrightarrow \text{Irrigation} \longrightarrow \text{Consumption} \longrightarrow \text{Health} \longrightarrow \text{Longitudinal Change}$$
 
-However, real landscape water demand changes every single day:
-- **Temperature & Solar Radiation:** Drive daily atmospheric evaporative demand.
-- **Relative Humidity & Vapor Pressure Deficit (VPD):** Determine transpirational pull on plant stomata.
-- **Wind Speed:** Multiplies evaporation rates and disrupts sprinkler spray distribution patterns.
-- **Precipitation:** Infiltrates soil reservoirs, often rendering programmed watering completely redundant.
-- **Microclimate & Exposure:** South-facing turf against reflective building glass loses moisture twice as fast as shaded understory planting 50 meters away on the same property.
-
-The gap between fixed clock runtimes and variable environmental demand leads to substantial water waste, elevated pumping energy bills, fungal plant diseases, nutrient leaching, and root degradation.
+Water intelligence is the first major intelligence layer. Future layers built on this spatial twin include:
+- Localized plant stress and canopy density monitoring.
+- Micro-leak and stuck-valve anomaly localization.
+- Non-invasive visual disease/stress classification.
+- Predictive infrastructure maintenance.
+- Longitudinal landscape change detection.
 
 ---
 
-## 3. Product Principles
-
-### Principle 1: Hardware-Optional (“Your Infrastructure. Our Intelligence.”)
-HIDRIQ starts with the assumption that the customer already owns functional irrigation infrastructure. The platform connects to what exists:
-- Legacy 24VAC controllers (Hunter, Rain Bird, Toro, Weathermatic, Galcon).
-- Cloud-connected controllers via manufacturer APIs (where available).
-- Flow meters and pulse counters.
-- Manual hoses, valves, and hand-watering protocols (via Manual Garden Mode).
-
-Sensors (in-situ soil moisture probes, ultrasonic flow sensors, leaf wetness monitors) are treated as **optional accuracy upgrades**, never as prerequisites.
-
-### Principle 2: Progressive Operating Modes
-Operators retain complete control over automation levels:
+## 4. The Seven Intelligence Engines
 
 ```
-┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐
-│   1. ANALYZE    │ ====> │  2. RECOMMEND   │ ====> │  3. AUTOPILOT   │
-└─────────────────┘       └─────────────────┘       └─────────────────┘
-Audit current run-        Generate zone-by-         Push runtime schedules
-times vs. modeled         zone run-sheets for       directly to supported
-depletion; detect         operator approval         controllers via API /
-over-watering & leaks.    via WhatsApp/Email/UI.    relay integration.
+┌─────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                 HIDRIQ CORE INTELLIGENCE                                    │
+│                                                                                             │
+│  1. Water Demand Engine         │ Calculates ASCE FAO-56 Penman-Monteith ET₀ & zone Kc.     │
+│  2. Forecast Engine             │ High-res NWP spatial grids, effective rainfall & VPD.     │
+│  3. Optimization Engine         │ Cycle-and-soak, runoff elimination & power tariff windows.│
+│  4. Execution Engine            │ Vendor-neutral API adapters, relay bridges & run-sheets.  │
+│  5. Verification & Learning     │ Flow meter reconciliation, leak anomaly & auto-tuning.   │
+│  6. Digital Twin Engine         │ Automated spatial parcel discovery, zones & exposure.     │
+│  7. Visual Health & Anomaly     │ Multi-spectral NDVI & longitudinal photo change detection.│
+└─────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
-
-### Principle 3: Disciplined Truth & No Unsupported Claims
-HIDRIQ rejects vanity claims such as *"Saves 50% guaranteed"*. Water savings are governed by physics, baseline mismanagement, and climatic conditions. All savings must be measured and validated through controlled trials rather than fabricated for sales literature.
 
 ---
 
-## 4. Core B2C Product: Manual Garden Mode & Garden Digital Twin
+## 5. Automation-First Onboarding: Ask for as Little as Possible
 
-One of HIDRIQ's most significant strategic innovations is **Manual Garden Mode**, expanding water intelligence to residential gardens that lack automated irrigation systems.
-
-### The Consumer Reality
-Millions of homeowners—especially owners of luxury villas, second homes, and holiday retreats across the Mediterranean (Morocco, Spain, Portugal, Italy, Greece)—care deeply about their gardens but water them using hoses, portable sprinklers, or manual taps. They have no interest in spending thousands of euros installing complex solenoid valves and trenching pipes.
-
-### How Manual Garden Mode Works
-1. **Input Collection:**
-   - Property GPS / address (establishing microclimate and high-resolution weather grid).
-   - 3 to 10 photos of the garden taken from different angles.
-   - Optional short video walkthrough.
-   - Optional photos of taps, hoses, or existing sprinkler heads.
-   - Optional recent water bills or historical watering habits.
-
-2. **Garden Digital Twin Generation:**
-   The HIDRIQ computer vision pipeline parses the visual assets to establish:
-   - **Vegetation Composition:** Classification of turf grass species, mature trees, ornamental shrubs, hedges, flowering beds, vegetable patches, and exposed soil beds.
-   - **Exposure & Microclimate:** Sun tracking, partial shade, canopy shading, and reflective surfaces (walls, swimming pools, paved terraces).
-   - **Topography & Soil Assumptions:** Visual slope indicators and regional soil classifications (sandy loam, clay, calcareous).
-   - **Zonal Partitioning:** Division of the garden into logical micro-zones.
-
-> **Crucial Product Truth:** Photographs alone do **NOT** measure soil moisture. Photos provide vegetation taxonomy, canopy density, landscape geometry, and visual plant health. This visual baseline is then combined with real-time solar radiation, temperature, rainfall, and $ET_0$ physics models to calculate the water balance.
-
-3. **Personalized Weekly Recommendations:**
-   The user receives an intuitive weekly watering schedule translated into human terms (minutes of hose time or sprinkler placement), without technical jargon.
+### The Core Automation Principle
+The user should never have to manually configure complex agronomic formulas or draw polygons from scratch:
 
 ```
-ILLUSTRATIVE UI EXAMPLE:
-┌────────────────────────────────────────────────────────┐
-│ YOUR GARDEN THIS WEEK (Villa Oasis, Marrakech)         │
-│ Expected Rainfall: 8 mm   |   Landscape Demand: 14 mm  │
-│ Recommended Net Irrigation: 6 mm                       │
-├────────────────────────────────────────────────────────┤
-│ MONDAY    | SKIP   — Sufficient moisture retained      │
-│ TUESDAY   | WATER  — ~35 min (Lawn & Citrus)           │
-│           | Window: 05:30 – 07:00 (Lowest evaporation) │
-│ WEDNESDAY | SKIP   — Optimal moisture balance          │
-│ THURSDAY  | WATER  — ~25 min (Ornamental borders)      │
-│ FRIDAY    | SKIP                                       │
-│ WEEKEND   | EVALUATE — Weather update pending          │
-└────────────────────────────────────────────────────────┘
+USER:   "Here is my property." (Address, GPS, or Pin)
+HIDRIQ: "We found your property. Elevation: 84m, 1,420 m² parcel."
+USER:   "Correct."
+HIDRIQ: "We detected 5 garden zones (Lawn: 94% conf, Citrus: 91% conf). We need 1 photo of Zone 3."
+USER:   "Uploaded."
+HIDRIQ: "I will tell you when it needs water."
+LATER:  "I will manage the irrigation for you."
 ```
 
-### B2C Funnel
-$$\text{Free Garden Water Check} \longrightarrow \text{Upload Location + Photos} \longrightarrow \text{Garden Digital Twin} \longrightarrow \text{Weekly Action Plan} \longrightarrow \text{Premium Monitoring} \longrightarrow \text{Controller Connect} \longrightarrow \text{Autopilot}$$
+### Automatic Garden Discovery with Confidence Scoring
+1. Ingests address/GPS $\rightarrow$ Cadastral parcel geometry, elevation model, and satellite imagery.
+2. Segments building footprint, hardscape, swimming pool, and vegetative zones.
+3. Assigns an explicit **Confidence Level** to each classification. Where confidence is low, HIDRIQ asks a single confirmation question rather than requesting manual entry:
+   - *“We think this area is lawn. Correct? [YES / NO]”*
+   - *“We found five garden zones. Correct? [CONFIRM / EDIT]”*
+
+### Intelligently Requested Photos
+Instead of asking for generic photos, HIDRIQ only asks for imagery to resolve specific ambiguities:
+- *“Photograph this specific shaded area to verify microclimate factor $K_{mc}$.”*
+- *“Photograph the citrus tree root zone to confirm drip line emitter density.”*
 
 ---
 
-## 5. Second-Home / Holiday-Home Positioning
+## 6. The Nine Levels of Automation
 
-Second-home owners face a distinct challenge: **absentee property ownership**.
-- The villa may sit unoccupied for weeks or months in coastal or arid climates.
-- Traditional systems either run blindly on timers (wasting water during unseasonal rain) or gardeners over-water to avoid plant mortality before the owner returns.
-- System leaks, broken pipe fittings, or stuck valves often go unnoticed until thousands of liters are lost and exorbitant water bills arrive.
+HIDRIQ structures system capability into a clear progressive scale:
 
-**Core Positioning:**
-> *“Your property is empty. HIDRIQ watches the water.”*
-
-HIDRIQ continuously computes the water budget for the estate, monitors weather shifts, adjusts recommendations dynamically, and alerts the owner or estate caretaker to abnormal anomalies.
+| Level | Name | Description & Capability | User Effort |
+| :--- | :--- | :--- | :--- |
+| **Level 0** | **Digital Twin** | Cadastral discovery, spatial zones, elevation, and base microclimate. | Initial confirmation |
+| **Level 1** | **Recommendation** | Weekly personalized watering schedules and duration run-sheets. | Executes manual watering |
+| **Level 2** | **Water Monitoring** | Ingestion of sub-meters and utility bills; consumption vs. modeled demand. | Periodic review |
+| **Level 3** | **Controller Integration**| Bi-directional API link to existing controllers (Hunter, Rain Bird, Toro). | Authorize OAuth / API |
+| **Level 4** | **Sensor Integration** | Optional in-situ soil moisture capacitance probes and local weather stations.| Automated telemetry |
+| **Level 5** | **Autopilot** | Closed-loop automated schedule adjustments pushed directly to valves. | Zero (Hands-off) |
+| **Level 6** | **Anomaly Detection** | Real-time flow telemetry flagging pipe bursts, stuck valves, or clogs. | Proactive alert only |
+| **Level 7** | **Vegetation Health** | Longitudinal visual health tracking; identifying chronic dry spots. | Automated tracking |
+| **Level 8** | **Predictive Maintenance**| Anticipating solenoid valve failures or pressure drops before breakdown. | Preemptive notice |
 
 ---
 
-## 6. B2B Commercial Verticals
+## 7. The Autopilot Safety Architecture
 
-### 1. Hospitality (Beachhead — Hotels & Luxury Resorts)
-- **Pain Point:** High landscape water bills, strict guest aesthetic requirements (green turf, immaculate floral borders), complex multi-zone layouts, and high staff turnover.
-- **Solution:** Multi-site dashboard, shadow auditing of existing controllers, zone-specific $ET_0$ watering sheets, and non-invasive retrofit.
-- **Initial Partner:** **Zephyr Hotels, Morocco** (Design Partner / POC).
+Autonomous valve execution is never enabled on Day 1. The progression requires establishing a baseline period:
+$$\text{ANALYZE (Shadow Mode)} \longrightarrow \text{RECOMMEND} \longrightarrow \text{USER APPROVAL} \longrightarrow \text{AUTOPILOT}$$
 
-### 2. Golf Courses
-- **Pain Point:** Huge acreage with diverse micro-topography (greens, tees, fairways, roughs), intense scrutiny over regional water allowances, and high pumping power tariffs.
-- **Solution:** Sub-zone microclimate modeling, cycle-and-soak execution to eliminate runoff, and off-peak energy optimization.
+### Hardcoded Fail-Safe Rules (Safety Overrides Optimization)
+1. **Maximum Daily Water Limits & Zone Runtime Caps:** Hard software locks prevent any valve zone from operating longer than a safety threshold, regardless of model output.
+2. **Rain & Freeze Interlock:** Immediate automatic cancellation if natural rainfall exceeds 3mm or temperatures drop below 2°C.
+3. **Sensor Sanity Checks:** If sensor readings deviate by $>3\sigma$ from expected physical ranges, data is quarantined.
+4. **Confidence Fallback:** If weather forecast confidence drops below threshold, the system immediately reverts from **AUTOPILOT to RECOMMENDATION MODE**.
+5. **Emergency Manual Override:** Physical and digital master kill-switches remain available at all times.
 
-### 3. Commercial Landscapes & Large Estates
-- **Pain Point:** Large corporate campuses, residential compounds, and public-private parks with distributed legacy controllers from mixed vendors.
-- **Solution:** Vendor-neutral consolidation under a single intelligence and policy layer.
+---
 
-### 4. High-Value Agriculture (Stage 3 — Coming Soon)
-- **Pain Point:** Water scarcity in arid/semi-arid regions (olives, citrus, almonds, avocados, dates, vineyards) where water volume directly determines crop yield and quality.
-- **Architecture Readiness:** Day-1 support for agronomic hierarchies:
-  $$\text{Farm} \longrightarrow \text{Field} \longrightarrow \text{Block} \longrightarrow \text{Crop} \longrightarrow \text{Variety} \longrightarrow \text{Growth Stage} \longrightarrow \text{Soil Hydrology}$$
-- **Strategic Goal:** Shift from landscape aesthetics to **maximizing economic yield value per cubic metre ($/m³)**.
+## 8. Human Input Decreases Over Time
+
+The product is designed around a natural compounding intelligence curve:
+- **DAY 01:** User confirms property geometry and provides targeted photos.
+- **DAY 30:** HIDRIQ understands microclimate responses, soil infiltration, and transpirational curves.
+- **DAY 90:** HIDRIQ understands normal baseline behavior and historical variations.
+- **LONG TERM:** HIDRIQ manages water autonomously, contacting the user only when anomalies occur.
+
+---
+
+## 9. Parallel Go-To-Market & Geographic Beachheads
+
+HIDRIQ runs enterprise B2B and consumer B2C in parallel from Day 1:
+- **B2B Beachhead — Morocco (Zephyr Hotels):** 60-day commercial trial proving physical water balancing on luxury hotel grounds across multi-zone commercial controllers.
+- **B2C Beachhead — Spain (Costa del Sol, Marbella, Mallorca, Alicante):** Self-service digital distribution of HIDRIQ HOME and Manual Garden Mode.
+- **Geographic Framing:** *“Built from Morocco + Spain · Designed for water-stressed markets worldwide.”*

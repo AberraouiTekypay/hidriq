@@ -5,12 +5,14 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { ProblemSection } from "@/components/ProblemSection";
 import { ProductThesis } from "@/components/ProductThesis";
+import { DigitalTwinExperience } from "@/components/DigitalTwinExperience";
 import { HowItWorks } from "@/components/HowItWorks";
 import { IntelligenceEngine } from "@/components/IntelligenceEngine";
 import { B2BSection } from "@/components/B2BSection";
 import { B2CSection } from "@/components/B2CSection";
 import { SecondHomeSection } from "@/components/SecondHomeSection";
 import { HardwarePhilosophy } from "@/components/HardwarePhilosophy";
+import { AutomationLevelsSection } from "@/components/AutomationLevelsSection";
 import { ZephyrPocSection } from "@/components/ZephyrPocSection";
 import { RoadmapSection } from "@/components/RoadmapSection";
 import { CtaBanner } from "@/components/CtaBanner";
@@ -41,37 +43,43 @@ export default function Home() {
       {/* 3. The Problem: Clocks vs Variable Demand */}
       <ProblemSection />
 
-      {/* 4. Product Thesis & Closed Loop */}
+      {/* 4. Product Thesis & Closed Loop (PREDICT -> ACT -> MEASURE -> LEARN) */}
       <ProductThesis />
 
-      {/* 5. How It Works (Observe, Predict, Optimize, Automate & Operating Modes) */}
+      {/* 5. The Living Digital Twin Interactive Experience (Spatial Showcase) */}
+      <DigitalTwinExperience />
+
+      {/* 6. How It Works (Observe, Predict, Optimize, Automate & Operating Modes) */}
       <HowItWorks />
 
-      {/* 6. The Water Intelligence Engine (5 Engines) */}
+      {/* 7. The Water Intelligence Engine (5 Software Engines) */}
       <IntelligenceEngine />
 
-      {/* 7. B2B Applications (Hospitality, Golf, Commercial, Agriculture Stage 3) */}
+      {/* 8. B2B Applications: HIDRIQ BUSINESS (Hospitality, Golf, Commercial, Agriculture Stage 3) */}
       <B2BSection onOpenLeadModal={handleOpenModal} />
 
-      {/* 8. B2C Application (HIDRIQ HOME & Manual Garden Mode) */}
+      {/* 9. B2C Application: HIDRIQ HOME (Manual Garden Mode & Digital Twin) */}
       <B2CSection onOpenLeadModal={handleOpenModal} />
 
-      {/* 9. Second-Home / Absentee Villa Angle */}
+      {/* 10. Second-Home / Absentee Villa Angle */}
       <SecondHomeSection onOpenLeadModal={handleOpenModal} />
 
-      {/* 10. Hardware Philosophy (Your Infrastructure. Our Intelligence.) */}
+      {/* 11. Hardware Philosophy (Your Infrastructure. Our Intelligence.) */}
       <HardwarePhilosophy onOpenLeadModal={handleOpenModal} />
 
-      {/* 11. Zephyr Hotels POC (Built in the Real World) */}
+      {/* 12. Nine Levels of Water Automation & Autopilot Safety Model */}
+      <AutomationLevelsSection />
+
+      {/* 13. Zephyr Hotels POC (Built in the Real World: Morocco Hospitality Beachhead) */}
       <ZephyrPocSection onOpenLeadModal={handleOpenModal} />
 
-      {/* 12. Strategic Roadmap (4 Stages & Dual Traction Curves) */}
+      {/* 14. Strategic Roadmap (4 Stages & Dual Traction Curves) */}
       <RoadmapSection />
 
-      {/* 13. Conversion Call to Action */}
+      {/* 15. Conversion Call to Action */}
       <CtaBanner onOpenLeadModal={handleOpenModal} />
 
-      {/* 14. Footer with Exact EM300 Attribution */}
+      {/* 16. Footer with Exact EM300 Attribution */}
       <Footer onOpenLeadModal={handleOpenModal} />
 
       {/* Interactive Assessment & Enterprise Lead Capture Modal */}
